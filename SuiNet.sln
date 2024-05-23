@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34701.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuiNet", "SuiNet\SuiNet.csproj", "{5528186F-641B-4BFC-8301-2830AF9BDA78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuiNet", "SuiNet\SuiNet.csproj", "{5528186F-641B-4BFC-8301-2830AF9BDA78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuiNet.Core", "SuiNet.Core\SuiNet.Core.csproj", "{9A10AAB2-95C4-4FC1-B288-7F76275AAB7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuiNet.Base", "src\SuiNet.Base\SuiNet.Base.csproj", "{6996DABB-68AD-4112-9EE1-FA6E2D090D0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{5528186F-641B-4BFC-8301-2830AF9BDA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5528186F-641B-4BFC-8301-2830AF9BDA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5528186F-641B-4BFC-8301-2830AF9BDA78}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A10AAB2-95C4-4FC1-B288-7F76275AAB7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A10AAB2-95C4-4FC1-B288-7F76275AAB7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A10AAB2-95C4-4FC1-B288-7F76275AAB7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A10AAB2-95C4-4FC1-B288-7F76275AAB7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6996DABB-68AD-4112-9EE1-FA6E2D090D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6996DABB-68AD-4112-9EE1-FA6E2D090D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6996DABB-68AD-4112-9EE1-FA6E2D090D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6996DABB-68AD-4112-9EE1-FA6E2D090D0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
