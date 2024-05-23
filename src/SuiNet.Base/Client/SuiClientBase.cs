@@ -1,4 +1,5 @@
 ﻿
+using SuiNet.Base.Client.Types;
 using SuiNet.Base.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,12 @@ namespace SuiNet.Base.Client
         {
             this._transport = transport;
         }
-        class Info
-        {
-            public string Version { get; set; }
-        }
 
         public virtual async Task<string> GetRpcApiVersion()
         {
 
-            var resp = await _transport.Send<Info>(new SuiRpcData("rpc.discover"));
-            return resp.info.version;
+            var resp = await _transport.Send<RpcApiVersion>(new SuiRpcData("rpc.discover"));
+            return resp.Info.Version;
         }
     }
 }

@@ -8,6 +8,10 @@ namespace SuiNet.Base.Client
     {
         public string Method { get; set; }
         public List<object> Params { get; set; }
+        public string Jsonrpc { get{
+                return "2.0";
+            } }
+        public string Id { get; set; }
 
         public SuiRpcData() { }
 
