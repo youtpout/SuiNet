@@ -15,10 +15,20 @@ namespace SuiNet.Client
 
         public SuiRpcData() { }
 
-        public SuiRpcData(string method, List<object> @params)
+        public SuiRpcData(string method, List<object> listParams)
         {
             Method = method;
-            Params = @params;
+            Params = listParams;
+        }
+
+        public SuiRpcData(string method, object objectParams)
+        {
+            Method = method;
+            var list=new List<object>();
+            foreach(var prop in objectParams.GetType().GetProperties()) {
+                list.Add(prop.GetValue(objectParams, null));
+            }
+            Params = list;
         }
 
 

@@ -16,9 +16,13 @@ namespace SuiNet.Client
 
         public virtual async Task<string> GetRpcApiVersion()
         {
+            var response = await _transport.Send<RpcApiVersion>(new SuiRpcData("rpc.discover"));
+            return response.Info.Version;
+        }
 
-            var resp = await _transport.Send<RpcApiVersion>(new SuiRpcData("rpc.discover"));
-            return resp.Info.Version;
+        public virtual async Task<PaginatedCoins> GetCoins(GetCoinsParams input)
+        {
+            return await _transport.Send<PaginatedCoins>(new SuiRpcData("suix_getCoins",input));
         }
     }
 }
