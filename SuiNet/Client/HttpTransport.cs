@@ -1,4 +1,5 @@
 ﻿using SuiNet.Base.Client;
+using SuiNet.Base.Client.Types;
 using SuiNet.Base.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -22,15 +23,22 @@ namespace SuiNet.Client
             this._httpClient.BaseAddress = new Uri("https://fullnode.mainnet.sui.io:443");
         }
 
-        public async Task<T> Send<T>(SuiRpcData data)
+        public HttpTransport(string baseUrl)
+        {
+            this._httpClient = new HttpClient();
+            this._httpClient.BaseAddress = new Uri(baseUrl);
+        }
+
+        public async Task<T> Send<T>(SuiRpcData data) where T : new()
         {
             _requestId++;
             data.Id = _requestId.ToString();
             var response = await _httpClient.PostAsJsonAsync<SuiRpcData>("", data);
             response.EnsureSuccessStatusCode();
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            T result = JsonSerializer.Deserialize<T>(jsonResponse, new JsonSerializerOptions(JsonSerializerDefaults.Web));
-            return result;
+            RpcResult<T> result = JsonSerializer.Deserialize<RpcResult<T>>(jsonResponse, new JsonSerializerOptions(JsonSerializerDefaults.Web));
+
+            return result.Result;
         }
 
         public async Task Send(SuiRpcData data)
