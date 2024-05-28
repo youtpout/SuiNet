@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace SuiNet.Base.Client.Types
+namespace SuiNet.Client.Types
 {
 
 }

@@ -1,12 +1,8 @@
-﻿
-using SuiNet.Base.Client.Types;
-using SuiNet.Base.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using SuiNet.Client.Types;
+using SuiNet.Interfaces;
 using System.Threading.Tasks;
 
-namespace SuiNet.Base.Client
+namespace SuiNet.Client
 {
     public class SuiClientBase
     {

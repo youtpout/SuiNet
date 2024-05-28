@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SuiNet\SuiNet.csproj" />
+    <ProjectReference Include="..\..\src\SuiNet\SuiNet.csproj" />
   </ItemGroup>
 
   <ItemGroup>

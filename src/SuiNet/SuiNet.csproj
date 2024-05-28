@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\SuiNet.Base\SuiNet.Base.csproj" />
+    <ProjectReference Include="..\SuiNet.Base\SuiNet.Base.csproj" />
   </ItemGroup>
 
 </Project>

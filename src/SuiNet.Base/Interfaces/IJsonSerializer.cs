@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SuiNet.Base.Interfaces
+namespace SuiNet.Interfaces
 {
     /// <summary>
     /// Define serialisation method, so you can inject your own serialisation mechanism with newtonsoft or system json for example

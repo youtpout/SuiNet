@@ -1,12 +1,8 @@
-﻿using SuiNet.Base.Client;
-using SuiNet.Base.Client.Types;
-using SuiNet.Base.Interfaces;
+﻿using SuiNet.Client.Types;
+using SuiNet.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 

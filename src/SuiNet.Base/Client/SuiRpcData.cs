@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SuiNet.Base.Client
+namespace SuiNet.Client
 {
     public class SuiRpcData
     {

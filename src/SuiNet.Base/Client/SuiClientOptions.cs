@@ -1,6 +1,6 @@
-﻿using SuiNet.Base.Interfaces;
+﻿using SuiNet.Interfaces;
 
-namespace SuiNet.Base.Client
+namespace SuiNet.Client
 {
     public class SuiClientOptions
     {
