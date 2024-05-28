@@ -24,7 +24,7 @@ namespace SuiNet.Test
         }
 
         [Fact]
-        public async void TestGetCoin()
+        public async void TestGetCoins()
         {
             string address = "0x02a212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f331";
             var coinParams = new GetCoinsParams
@@ -37,6 +37,17 @@ namespace SuiNet.Test
             Assert.True(paginatedCoins.Data.Count > 0);
         }
 
-
+        [Fact]
+        public async void TestGetAllCoins()
+        {
+            string address = "0x02a212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f331";
+            var coinParams = new GetAllCoinsParams
+            {
+                Owner = address,
+                Limit = 10
+            };
+            var paginatedCoins = await _suiClient.GetAllCoins(coinParams);
+            Assert.True(paginatedCoins.Data.Count > 0);
+        }
     }
 }

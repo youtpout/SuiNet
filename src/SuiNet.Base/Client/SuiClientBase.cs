@@ -24,5 +24,11 @@ namespace SuiNet.Client
         {
             return await _transport.Send<PaginatedCoins>(new SuiRpcData("suix_getCoins",input));
         }
+
+        public virtual async Task<PaginatedCoins> GetAllCoins(GetAllCoinsParams input)
+        {
+            return await _transport.Send<PaginatedCoins>(new SuiRpcData("suix_getAllCoins", input));
+        }
+
     }
 }

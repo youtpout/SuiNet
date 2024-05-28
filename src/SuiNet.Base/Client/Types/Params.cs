@@ -11,4 +11,11 @@ namespace SuiNet.Client.Types
         public string Cursor { get; set; }
         public int Limit { get; set; }
     }
+
+    public class GetAllCoinsParams
+    {
+        public string Owner { get; set; }
+        public string Cursor { get; set; }
+        public int Limit { get; set; }
+    }
 }
