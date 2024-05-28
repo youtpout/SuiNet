@@ -22,4 +22,14 @@ namespace SuiNet.Client.Types
         public bool HasNextPage { get; set; }
         public string NextCursor { get; set; }
     }
+
+    public class CoinBalance
+    {
+        public string CoinType { get; set; }
+        public int CoinObjectCount { get; set; }
+        public string TotalBalance { get; set; }
+        public Dictionary<string, string> LockedBalance { get; set; }
+    }
+
+
 }

@@ -8,6 +8,7 @@ namespace SuiNet.Test
     {
         private readonly ITestOutputHelper _output;
         private readonly SuiClient _suiClient;
+        string address = "0x02a212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f331";
 
         public ClientTest(ITestOutputHelper output)
         {
@@ -26,7 +27,6 @@ namespace SuiNet.Test
         [Fact]
         public async void TestGetCoins()
         {
-            string address = "0x02a212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f331";
             var coinParams = new GetCoinsParams
             {
                 Owner = address,
@@ -40,7 +40,6 @@ namespace SuiNet.Test
         [Fact]
         public async void TestGetAllCoins()
         {
-            string address = "0x02a212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f331";
             var coinParams = new GetAllCoinsParams
             {
                 Owner = address,
@@ -48,6 +47,29 @@ namespace SuiNet.Test
             };
             var paginatedCoins = await _suiClient.GetAllCoins(coinParams);
             Assert.True(paginatedCoins.Data.Count > 0);
+        }
+
+        [Fact]
+        public async void TestGetBalance()
+        {
+            var coinParams = new GetBalanceParams
+            {
+                Owner = address,
+                CoinType = "0x2::sui::SUI"
+            };
+            var paginatedCoins = await _suiClient.GetBalance(coinParams);
+            Assert.NotEmpty(paginatedCoins.TotalBalance);
+        }
+
+        [Fact]
+        public async void TestGetAllBalances()
+        {
+            var coinParams = new GetAllBalancesParams
+            {
+                Owner = address
+            };
+            var paginatedCoins = await _suiClient.GetAllBalances(coinParams);
+            Assert.True(paginatedCoins.Count > 0);
         }
     }
 }

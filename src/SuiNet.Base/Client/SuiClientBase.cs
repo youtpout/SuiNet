@@ -1,5 +1,6 @@
 ﻿using SuiNet.Client.Types;
 using SuiNet.Interfaces;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace SuiNet.Client
@@ -28,6 +29,16 @@ namespace SuiNet.Client
         public virtual async Task<PaginatedCoins> GetAllCoins(GetAllCoinsParams input)
         {
             return await _transport.Send<PaginatedCoins>(new SuiRpcData("suix_getAllCoins", input));
+        }
+
+        public virtual async Task<CoinBalance> GetBalance(GetBalanceParams input)
+        {
+            return await _transport.Send<CoinBalance>(new SuiRpcData("suix_getBalance", input));
+        }
+
+        public virtual async Task<List<CoinBalance>> GetAllBalances(GetAllBalancesParams input)
+        {
+            return await _transport.Send<List<CoinBalance>>(new SuiRpcData("suix_getAllBalances", input));
         }
 
     }
