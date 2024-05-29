@@ -71,5 +71,40 @@ namespace SuiNet.Test
             var paginatedCoins = await _suiClient.GetAllBalances(coinParams);
             Assert.True(paginatedCoins.Count > 0);
         }
+
+
+        [Fact]
+        public async void TestGetCoinMetadata()
+        {
+            var coinParams = new GetCoinMetadataParams
+            {
+                CoinType = "0xc060006111016b8a020ad5b33834984a437aaa7d3c74c18e09a95d48aceab08c::coin::COIN"
+            };
+            var paginatedCoins = await _suiClient.GetCoinMetadata(coinParams);
+            Assert.Equal("USDT", paginatedCoins.Symbol);
+        }
+
+
+        [Fact]
+        public async void TestGetTotalSupply()
+        {
+            var coinParams = new GetTotalSupplyParams
+            {
+                CoinType = "0xda1644f58a955833a15abae24f8cc65b5bd8152ce013fde8be0a6a3dcf51fe36::token::TOKEN"
+            };
+            var paginatedCoins = await _suiClient.GetTotalSupply(coinParams);
+            Assert.NotEmpty(paginatedCoins.Value);
+        }
+
+        [Fact]
+        public async void TestCall()
+        {
+            var coinParams = new GetTotalSupplyParams
+            {
+                CoinType = "0xda1644f58a955833a15abae24f8cc65b5bd8152ce013fde8be0a6a3dcf51fe36::token::TOKEN"
+            };
+            var paginatedCoins = await _suiClient.Call<CoinSupply>("suix_getTotalSupply", new List<object>() { coinParams.CoinType });
+            Assert.NotEmpty(paginatedCoins.Value);
+        }
     }
 }

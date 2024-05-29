@@ -31,5 +31,18 @@ namespace SuiNet.Client.Types
         public Dictionary<string, string> LockedBalance { get; set; }
     }
 
+    public class CoinMetadata
+    {
+        public int Decimals { get; set; }
+        public string Description { get; set; }
+        public string IconUrl { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Symbol { get; set; }
+    }
 
+    public class CoinSupply
+    {
+        public string Value { get; set; }
+    }
 }

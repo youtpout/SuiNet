@@ -29,4 +29,14 @@ namespace SuiNet.Client.Types
     {
         public string Owner { get; set; }
     }
+
+    public class GetCoinMetadataParams
+    {
+        public string CoinType { get; set; }
+    }
+
+    public class GetTotalSupplyParams
+    {
+        public string CoinType { get; set; }
+    }
 }
