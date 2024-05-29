@@ -1,5 +1,6 @@
 using SuiNet.Client;
 using SuiNet.Client.Types;
+using System.Text.Json;
 using Xunit.Abstractions;
 
 namespace SuiNet.Test
@@ -9,7 +10,10 @@ namespace SuiNet.Test
         private readonly ITestOutputHelper _output;
         private readonly SuiClient _suiClient;
         string address = "0x02a212de6a9dfa3a69e22387acfbafbb1a9e591bd9d636e7895dcfc8de05f331";
-
+        const string DEFAULT_PACKAGE = "0x2";
+        const string DEFAULT_MODULE = "coin";
+        const string DEFAULT_FUNCTION = "balance";
+        const string DEFAULT_STRUCT = "Coin";
         public ClientTest(ITestOutputHelper output)
         {
             this._output = output;
@@ -105,6 +109,20 @@ namespace SuiNet.Test
             };
             var paginatedCoins = await _suiClient.Call<CoinSupply>("suix_getTotalSupply", new List<object>() { coinParams.CoinType });
             Assert.NotEmpty(paginatedCoins.Value);
+        }
+
+        [Fact]
+        public async void TestGetMoveFunctionArgTypes()
+        {
+            var input = new GetMoveFunctionArgTypesParams
+            {
+                Function = DEFAULT_FUNCTION,
+                Package = DEFAULT_PACKAGE,
+                Module = DEFAULT_MODULE
+            };
+            var result = await _suiClient.GetMoveFunctionArgTypes(input);
+            var moveResult = result[0];
+            Assert.Equal(ObjectValueKind.ByImmutableReference, result[0].Object);
         }
     }
 }

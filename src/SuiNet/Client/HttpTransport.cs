@@ -1,6 +1,7 @@
 ﻿using SuiNet.Client.Types;
 using SuiNet.Interfaces;
 using System;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -32,7 +33,8 @@ namespace SuiNet.Client
             var response = await _httpClient.PostAsJsonAsync<SuiRpcData>("", data);
             response.EnsureSuccessStatusCode();
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            RpcResult<T> result = JsonSerializer.Deserialize<RpcResult<T>>(jsonResponse, new JsonSerializerOptions(JsonSerializerDefaults.Web));
+            Debug.WriteLine(jsonResponse);
+            RpcResult<T> result = Deserialize<RpcResult<T>>(jsonResponse);
 
             return result.Result;
         }
@@ -41,6 +43,17 @@ namespace SuiNet.Client
         {
             var response = await _httpClient.PostAsJsonAsync<SuiRpcData>("", data);
             response.EnsureSuccessStatusCode();
+        }
+
+        public T Deserialize<T>(string json)
+        {
+            return JsonSerializer.Deserialize<T>(json, new JsonSerializerOptions(JsonSerializerDefaults.Web));
+        }
+
+        public T Parse<T>(object data)
+        {
+            JsonElement result = (JsonElement)data;
+            return result.Deserialize<T>();
         }
     }
 }

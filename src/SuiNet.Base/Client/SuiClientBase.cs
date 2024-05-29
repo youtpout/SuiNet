@@ -1,5 +1,6 @@
 ﻿using SuiNet.Client.Types;
 using SuiNet.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -77,6 +78,36 @@ namespace SuiNet.Client
         public virtual async Task<T> Call<T>(string method, List<object> input) where T : new()
         {
             return await _transport.Send<T>(new SuiRpcData(method, input));
+        }
+
+        /// <summary>
+        /// Get Move function argument types like read, write and full access
+        /// </summary>
+        public virtual async Task<List<SuiMoveFunctionArgType>> GetMoveFunctionArgTypes(GetMoveFunctionArgTypesParams input)
+        {
+            var result = await _transport.Send<List<object>>(new SuiRpcData("sui_getMoveFunctionArgTypes", input));
+            List<SuiMoveFunctionArgType> suiMoveFunctionArgs = new List<SuiMoveFunctionArgType>();
+            if (result.Count > 0)
+            {
+                result.ForEach(r =>
+                {
+                    var suiMoveFunctionArg = new SuiMoveFunctionArgType();
+                    try
+                    {
+                        var p = this._transport.Parse<SuiMoveFunctionArgTypeJson>(r);
+                        suiMoveFunctionArg.Object = (ObjectValueKind)Enum.Parse(typeof(ObjectValueKind), p.Object);
+                    }
+                    catch (System.Exception)
+                    {
+
+                        suiMoveFunctionArg.Object = ObjectValueKind.Pure;
+                    }
+                    suiMoveFunctionArgs.Add(suiMoveFunctionArg);
+
+                });
+            }
+
+            return suiMoveFunctionArgs;
         }
     }
 }

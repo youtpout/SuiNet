@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SuiNet.Client.Types
 {
@@ -45,4 +42,27 @@ namespace SuiNet.Client.Types
     {
         public string Value { get; set; }
     }
+
+    public enum ObjectValueKind
+    {
+        Pure,
+        ByImmutableReference,
+        ByMutableReference,
+        ByValue
+    }
+
+    public class SuiMoveFunctionArgTypeJson
+    {
+        /// <summary>
+        /// Possible value ByImmutableReference, ByMutableReference, ByValue
+        /// </summary>
+        public string Object { get; set; }
+    }
+
+    public class SuiMoveFunctionArgType
+    {
+        public ObjectValueKind Object { get; set; }
+    }
+
+
 }

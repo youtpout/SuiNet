@@ -39,4 +39,13 @@ namespace SuiNet.Client.Types
     {
         public string CoinType { get; set; }
     }
+
+    public class GetMoveFunctionArgTypesParams
+    {
+        public string Package { get; set; }
+        public string Module { get; set; }
+        public string Function { get; set; }
+    }
+
+
 }
