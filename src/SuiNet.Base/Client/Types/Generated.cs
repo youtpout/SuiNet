@@ -82,6 +82,38 @@ namespace SuiNet.Client.Types
         public Dictionary<string,object> ExposedFunctions { get; set; }
     }
 
+    public class SuiMoveNormalizedFunction
+    {
+        public bool IsEntry { get; set; }
+        public List<SuiMoveNormalizedType> Parameters { get; set; }
+        public List<SuiMoveNormalizedType> Return { get; set; }
+        public List<SuiMoveAbilitySet> TypeParameters { get; set; }
+        public string Visibility { get; set; }
+    }
+
+    public class SuiMoveAbilitySet
+    {
+        public List<string> Abilities { get; set; }
+    }
+
+    public class SuiReference
+    {
+        public SuiStruct Struct { get; set; }
+    }
+
+
+    public class SuiMoveNormalizedType
+    {
+        public SuiReference Reference { get; set; }
+    }
+
+    public class SuiStruct
+    {
+        public string Address { get; set; }
+        public string Module { get; set; }
+        public string Name { get; set; }
+        public List<SuiMoveNormalizedType> TypeArguments { get; set; }
+    }
 
     #endregion
 }

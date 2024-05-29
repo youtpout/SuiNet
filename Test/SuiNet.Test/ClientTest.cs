@@ -135,5 +135,18 @@ namespace SuiNet.Test
             var result = await _suiClient.GetNormalizedMoveModulesByPackage(input);
             Assert.True(result.Any(x => x.Value.Address == DEFAULT_PACKAGE));
         }
+
+        [Fact]
+        public async void TestGetNormalizedMoveFunction()
+        {
+            var input = new GetNormalizedMoveFunctionParams
+            {
+                Function = DEFAULT_FUNCTION,
+                Package = DEFAULT_PACKAGE,
+                Module = DEFAULT_MODULE
+            };
+            var result = await _suiClient.GetNormalizedMoveFunction(input);
+            Assert.True(result.Parameters.Any(x => x.Reference.Struct.Address == DEFAULT_PACKAGE));
+        }
     }
 }

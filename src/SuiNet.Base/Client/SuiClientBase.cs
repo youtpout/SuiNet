@@ -116,5 +116,13 @@ namespace SuiNet.Client
         {
             return await _transport.Send<SuiMoveNormalizedModules>(new SuiRpcData("sui_getNormalizedMoveModulesByPackage", input));
         }
+
+        /// <summary>
+        /// Get a structured representation of Move function
+        /// </summary>
+        public virtual async Task<SuiMoveNormalizedFunction> GetNormalizedMoveFunction(GetNormalizedMoveFunctionParams input)
+        {
+            return await _transport.Send<SuiMoveNormalizedFunction>(new SuiRpcData("sui_getNormalizedMoveFunction", input));
+        }
     }
 }
