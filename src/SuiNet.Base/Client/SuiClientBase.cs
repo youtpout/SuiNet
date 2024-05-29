@@ -91,19 +91,18 @@ namespace SuiNet.Client
             {
                 result.ForEach(r =>
                 {
+                    // custom type management, in C# we don't have union type
                     var suiMoveFunctionArg = new SuiMoveFunctionArgType();
                     try
                     {
                         var p = this._transport.Parse<SuiMoveFunctionArgTypeJson>(r);
                         suiMoveFunctionArg.Object = (ObjectValueKind)Enum.Parse(typeof(ObjectValueKind), p.Object);
                     }
-                    catch (System.Exception)
+                    catch (Exception)
                     {
-
                         suiMoveFunctionArg.Object = ObjectValueKind.Pure;
                     }
                     suiMoveFunctionArgs.Add(suiMoveFunctionArg);
-
                 });
             }
 

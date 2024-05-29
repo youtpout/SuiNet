@@ -11,6 +11,9 @@ namespace SuiNet.Interfaces
     {
         T Deserialize<T>(string json);
 
+        /// <summary>
+        /// Parse a JsonElement 
+        /// </summary>
         T Parse<T>(object data);
     }
 }
