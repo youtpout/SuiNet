@@ -47,5 +47,8 @@ namespace SuiNet.Client.Types
         public string Function { get; set; }
     }
 
+    public class GetNormalizedMoveModulesByPackageParams {
+        public string Package { get; set; }
+    }
 
 }

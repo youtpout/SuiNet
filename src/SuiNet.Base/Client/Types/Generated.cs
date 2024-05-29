@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SuiNet.Client.Types;
+using System.Collections.Generic;
 
 namespace SuiNet.Client.Types
 {
@@ -64,5 +65,23 @@ namespace SuiNet.Client.Types
         public ObjectValueKind Object { get; set; }
     }
 
+    #region SuiMoveNormalizedModules
 
+    public class SuiMoveNormalizedModules:Dictionary<string, SuiMoveNormalizedModule>
+    {
+
+    }
+
+    public class SuiMoveNormalizedModule
+    {
+        public int FileFormatVersion { get; set; }
+        public string Address { get; set; }
+        public string Name { get; set; }
+        public List<object> Friends { get; set; }
+        public Dictionary<string, object> Structs { get; set; }
+        public Dictionary<string,object> ExposedFunctions { get; set; }
+    }
+
+
+    #endregion
 }

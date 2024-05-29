@@ -124,5 +124,16 @@ namespace SuiNet.Test
             var moveResult = result[0];
             Assert.Equal(ObjectValueKind.ByImmutableReference, result[0].Object);
         }
+
+        [Fact]
+        public async void TestGetNormalizedMoveModulesByPackage()
+        {
+            var input = new GetNormalizedMoveModulesByPackageParams
+            {
+                Package = DEFAULT_PACKAGE
+            };
+            var result = await _suiClient.GetNormalizedMoveModulesByPackage(input);
+            Assert.True(result.Any(x => x.Value.Address == DEFAULT_PACKAGE));
+        }
     }
 }

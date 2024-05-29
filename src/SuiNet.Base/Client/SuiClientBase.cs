@@ -108,5 +108,13 @@ namespace SuiNet.Client
 
             return suiMoveFunctionArgs;
         }
+
+        /// <summary>
+        /// Get a map from module name to structured representations of Move modules
+        /// </summary>
+        public virtual async Task<SuiMoveNormalizedModules> GetNormalizedMoveModulesByPackage(GetNormalizedMoveModulesByPackageParams input)
+        {
+            return await _transport.Send<SuiMoveNormalizedModules>(new SuiRpcData("sui_getNormalizedMoveModulesByPackage", input));
+        }
     }
 }
