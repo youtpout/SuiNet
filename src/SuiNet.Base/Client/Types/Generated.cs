@@ -65,7 +65,7 @@ namespace SuiNet.Client.Types
         public ObjectValueKind Object { get; set; }
     }
 
-    #region SuiMoveNormalizedModules
+    #region SuiMoveNormalized
 
     public class SuiMoveNormalizedModules:Dictionary<string, SuiMoveNormalizedModule>
     {
@@ -78,8 +78,8 @@ namespace SuiNet.Client.Types
         public string Address { get; set; }
         public string Name { get; set; }
         public List<object> Friends { get; set; }
-        public Dictionary<string, object> Structs { get; set; }
-        public Dictionary<string,object> ExposedFunctions { get; set; }
+        public Dictionary<string, SuiMoveNormalizedStruct> Structs { get; set; }
+        public Dictionary<string, SuiMoveNormalizedStruct> ExposedFunctions { get; set; }
     }
 
     public class SuiMoveNormalizedFunction
@@ -113,6 +113,25 @@ namespace SuiNet.Client.Types
         public string Module { get; set; }
         public string Name { get; set; }
         public List<SuiMoveNormalizedType> TypeArguments { get; set; }
+    }
+
+    public class SuiMoveNormalizedStruct
+    {
+        public SuiMoveAbilitySet Abilities { get; set; }
+        public List<SuiMoveNormalizedField> Fields { get; set; }
+        public List<SuiMoveStructTypeParameter> TypeParameters { get; set; }
+    }
+
+    public class SuiMoveNormalizedField
+    {
+        public string Name { get; set; }
+        public SuiMoveNormalizedType Type { get; set; }
+    }
+
+    public class SuiMoveStructTypeParameter
+    {
+        public SuiMoveAbilitySet Constraints { get; set; }
+        public bool IsPhantom { get; set; }
     }
 
     #endregion

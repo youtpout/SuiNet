@@ -57,4 +57,11 @@ namespace SuiNet.Client.Types
         public string Module { get; set; }
         public string Function { get; set; }
     }
+
+    public class GetNormalizedMoveStructParams
+    {
+        public string Package { get; set; }
+        public string Module { get; set; }
+        public string Struct { get; set; }
+    }
 }
