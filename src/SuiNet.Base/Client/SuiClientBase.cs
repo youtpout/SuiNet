@@ -133,5 +133,13 @@ namespace SuiNet.Client
         {
             return await _transport.Send<SuiMoveNormalizedStruct>(new SuiRpcData("sui_getNormalizedMoveStruct", input));
         }
+
+        /// <summary>
+        /// Get all objects owned by an address
+        /// </summary>
+        public virtual async Task<PaginatedObjectsResponse> GetOwnedObjects(GetOwnedObjectsParams input)
+        {
+            return await _transport.Send<PaginatedObjectsResponse>(new SuiRpcData("suix_getOwnedObjects", input));
+        }
     }
 }

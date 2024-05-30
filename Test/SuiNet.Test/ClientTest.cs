@@ -161,5 +161,16 @@ namespace SuiNet.Test
             var result = await _suiClient.GetNormalizedMoveStruct(input);
             Assert.True(result.Fields.Count > 1);
         }
+
+        [Fact]
+        public async void TestGetOwnedObjects()
+        {
+            var input = new GetOwnedObjectsParams
+            {
+                Owner = address
+            };
+            var result = await _suiClient.GetOwnedObjects(input);
+            Assert.True(result.Data.Count > 0);
+        }
     }
 }

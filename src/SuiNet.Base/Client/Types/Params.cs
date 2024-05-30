@@ -47,7 +47,8 @@ namespace SuiNet.Client.Types
         public string Function { get; set; }
     }
 
-    public class GetNormalizedMoveModulesByPackageParams {
+    public class GetNormalizedMoveModulesByPackageParams
+    {
         public string Package { get; set; }
     }
 
@@ -64,4 +65,14 @@ namespace SuiNet.Client.Types
         public string Module { get; set; }
         public string Struct { get; set; }
     }
+
+    public class GetOwnedObjectsParams
+    {
+        public string Owner { get; set; }
+        public SuiObjectResponseQuery SuiObjectResponseQuery { get; set; }
+        public string Cursor { get; set; }
+        public int Limit { get; set; } = 50;
+    }
+
+
 }

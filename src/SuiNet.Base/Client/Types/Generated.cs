@@ -67,7 +67,7 @@ namespace SuiNet.Client.Types
 
     #region SuiMoveNormalized
 
-    public class SuiMoveNormalizedModules:Dictionary<string, SuiMoveNormalizedModule>
+    public class SuiMoveNormalizedModules : Dictionary<string, SuiMoveNormalizedModule>
     {
 
     }
@@ -135,4 +135,36 @@ namespace SuiNet.Client.Types
     }
 
     #endregion
+
+    public class PaginatedObjectsResponse
+    {
+        public List<SuiObjectResponse> Data { get; set; }
+        public bool HasNextPage { get; set; }
+        public string NextCursor { get; set; }
+    }
+
+    public class SuiObjectResponse
+    {
+        public SuiObjectData Data { get; set; }
+        public object Error { get; set; }
+    }
+
+    public class SuiObjectData
+    {
+    //    public RawData bcs { get; set; }
+      //  public SuiParsedData Content { get; set; }
+        public string Digest { get; set; }
+    //    public DisplayFieldsResponse Display { get; set; }
+        public string ObjectId { get; set; }
+   //     public ObjectOwner Owner { get; set; }
+        public string PreviousTransaction { get; set; }
+        public string StorageRebate { get; set; }
+        public string Type { get; set; }
+        public string Version { get; set; }
+    }
+
+    public class SuiObjectResponseQuery
+    {
+
+    }
 }
